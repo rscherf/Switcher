@@ -69,7 +69,7 @@ I don't use every app, so I didn't include all the app URL schemes available to 
 Copyright
 ------------
 1. Star the Github repository
-2. Follow http://twitter.com/ryanscherf on Twitter
+2. Follow http://twitter.com/ryanscherf on Twitter and tell me how much you love this plugin
 3. Use it however you'd like
 
 
