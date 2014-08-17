@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>App Switcher JS Demo</title>
+	<title>iOS App Switcher jQuery Plugin by Ryan Scherf</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="../source/jquery.switcher.js"></script>
 
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			$(".social-by-url a").switcher({
+				additionalSchemas: [
+					{
+						pattern : /(mycustomapp)/g,
+						scheme	: function(username) {
+							return "my-app://" + username
+						}
+					}
+				]
+			});
+
+			$(".social-by-data a").switcher({
+				usernameFromURL: false
+			});
+
+		});
+
+	</script>
+
 </head>
 <body>
 
-	<div class="social">
+	<div class="social-by-url">
 		<a href="http://twitter.com/ryanscherf">Twitter</a>
-		<a href="http://facebook.com/ryanscherf">Facebook</a>
 		<a href="http://instagram.com/ryanscherf">Instagram</a>
+		<a href="http://facebook.com/ryanscherf">Facebook</a>
 		<a href="http://quirky.com/ryanscherf">Quirky</a>
+		<a href="http://mycustomapp.com/ryanscherf">Custom App</a>
+	</div>
+
+	<div class="social-by-data">
+		<a href="http://twitter.com/ryanscherf" data-username="ryanscherf">Twitter</a>
+		<a href="http://instagram.com/ryanscherf" data-username="ryanscherf">Instagram</a>
+		<a href="http://facebook.com/ryanscherf" data-username="ryanscherf">Facebook</a>
+		<a href="http://quirky.com/ryanscherf" data-username="ryanscherf">Quirky</a>
 	</div>
 
 </body>

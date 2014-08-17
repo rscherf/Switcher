@@ -1,64 +1,89 @@
-$(document).ready(function() {
+// Todo:
+// Change pattern to string
+// Run on iOS
 
-	var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+(function($) {
+	$.fn.switcher = function(options) {
 
+		var settings = $.extend({
+			iOS								: /(iPad|iPhone|iPod)/g.test(navigator.userAgent),
+			usernameFromURL 	: true, // or use data-username html attribute
+			additionalSchemas : []
+    }, options);
+
+		// Define the native apps to deeplink
 		var services = [
 			{
-				pattern: /(twitter)/g,
-				scheme: function(username) {
-					return "twitter://user?screen_name=" + username
-				}
-			},
-			{
-				pattern: /(facebook)/g,
-				scheme: function(username) {
+				pattern	: /(facebook)/g,
+				scheme	: function(username) {
+
 					var facebookId = "";
 
-					$.ajax({
-						type: "get",
-						async: false,
-						dataType: "json",
-						url: "https://graph.facebook.com/" + username,
-					}).done(function(response) {
-						facebookId = response.id;
-					});
+					if(isNaN(parseInt(username)))
+					{
+						$.ajax({
+							url			 : "https://graph.facebook.com/" + username,
+							type 		 : "get",
+							dataType : "json",
+							async		 : false,
+						}).done(function(response) {
+							facebookId = response.id;
+						});
+					}
+					else
+					{
+						facebookId = username;
+					}
 
 					return "fb://profile/" + facebookId;
 				}
 			},
 			{
-				pattern: /(instagram)/g,
-				scheme: function(username) {
+				pattern	: /(instagram)/g,
+				scheme	: function(username) {
 					return "instagram://user?username=" + username
 				}
 			},
 			{
-				pattern: /(quirky)/g,
-				scheme: function(username) {
+				pattern	: /(quirky)/g,
+				scheme	: function(username) {
 					return "quirky:///" + username
 				}
-			}
+			},
+			{
+				pattern	: /(twitter)/g,
+				scheme	: function(username) {
+					return "twitter://user?screen_name=" + username
+				}
+			},
 		];
 
-		$(".social a").each(function(i) {
-			var $this = $(this);
+		// Add on any user defined schemas
+		services = services.concat(settings.additionalSchemas);
 
-			var href = $(this).attr('href');
+		// Only run on iOS
 
-			$(services).each(function() {
+		// Iterate through the set
+    this.each(function() {
+
+  		var $this  = $(this),
+				href  	 = $(this).attr("href");
+
+			if(settings.usernameFromURL)
+				username = href.split(".com/")[1];
+			else
+				username = $this.data("username");
+
+			$(services).each(function(i) {
 				if(services[i].pattern.test(href))
 				{
-					$this.attr("href", services[i].scheme("ryanscherf")); 
+					$this.attr("href", services[i].scheme(username)); 
 					return false;
 				}
 			});
-		});
+    });
 
+    return this;
 
-		// console.log(services.twitter.pattern.test(url))
-		// console.log(services.twitter.scheme('ryanscherf'))
-		// console.log(services.facebook.scheme('ryanscherf'))
-
-	//http://stackoverflow.com/questions/9038625/detect-if-device-is-ios
-
-});
+	};
+}(jQuery));
