@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>iOS App Switcher jQuery Plugin by Ryan Scherf</title>
+	<title>iOS 	App Switcher jQuery Plugin by Ryan Scherf</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="../source/jquery.switcher.js"></script>
@@ -18,11 +18,13 @@
 							return "my-app://" + username
 						}
 					}
-				]
+				],
+				debug: true
 			});
 
 			$(".social-by-data a").switcher({
-				usernameFromURL: false
+				usernameFromURL: false,
+				debug: true
 			});
 
 		});
