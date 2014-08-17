@@ -51,7 +51,7 @@ Options/Settings
 Option | Default | Description
 ------ | ------- | ---------------------------------------------
 `debug`| `false` |Converts links on non-iOS devices for testing
-`iOS`  | `iPhone|iPod|iPad` | Defines the `navigator.userAgent` to look for on iOS
+`iOS`  | iPhone|iPod|iPad | Defines the `navigator.userAgent` to look for on iOS
 `usernameFromURL` | `true` | Attempts to derive usernames from URLs. If `false`, you can define usernames in the `data-username` attribute
 `additionalSchemas` | An array of patterns and schemes for additional native apps
 
