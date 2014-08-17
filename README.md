@@ -4,7 +4,7 @@ A jQuery plugin that converts regular links to iOS app URL schemes so your visit
 
 Converts HTML href attributes like: `http://twitter.com/ryanscherf` to `twitter://user?screen_name=ryanscherf`
 
-Written by http://ryan.sc - http://twitter.com/ryanscherf
+Written by Ryan Scherf : http://ryan.sc - http://twitter.com/ryanscherf
 
 Requirements
 ------------
