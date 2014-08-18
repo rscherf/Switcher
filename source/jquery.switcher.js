@@ -46,6 +46,12 @@
 					}
 				},
 				{
+					pattern : /(linkedin)/g,
+					scheme  : function(username) {
+						return "linkedin://profile/" + username
+					}
+				},
+				{
 					pattern	: /(instagram)/g,
 					scheme	: function(username) {
 						return "instagram://user?username=" + username
