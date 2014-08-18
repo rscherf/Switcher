@@ -80,10 +80,10 @@
 					href  	 	 = $(this).attr("href"),
 					identifier = href.split(".com/");
 
-				if(identifier.length > 1)
-					username = identifier[1];
-				else if($this.data("username") != "")
+				if($this.data("username") != "")
 					username = $this.data("username");
+				else if(identifier.length > 1)
+					username = identifier[1];
 				else
 					username = "notfound";
 
