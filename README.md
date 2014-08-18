@@ -6,6 +6,12 @@ Converts HTML href attributes like: `http://twitter.com/ryanscherf` to `twitter:
 
 Written by Ryan Scherf : http://ryan.sc - http://twitter.com/ryanscherf
 
+
+In Action
+------------
+Visit http://ryan.sc on your iOS device and tap either Twitter or LinkedIn.
+
+
 Requirements
 ------------
 Originally written with jQuery 2.X, but is probably backwards compatible.
