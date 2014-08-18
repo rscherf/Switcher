@@ -29,21 +29,15 @@ $(".social a").switcher();
 
 *OR*
 
+Some apps (liked LinkedIn) require an `id` to access, and not the pretty username.
+
 ```
-<a class="twitter" href="http://twitter.com/ryanscherf" data-username="ryanscherf">
-  @ryanscherf
+<a class="linkedin" href="http://linkedin.com/ryanscherf" data-username="10998304">
+  @ryanscherf on LinkedIn
 </a>
 ```
 
-And default to using the `data-username` attribute instead of the URL:
-
-```
-$("a.twitter").switcher({
-  usernameFromURL: false
-});
-```
-
-Switcher will scan all the links in the set and determine if any can be deeplinked to native apps.
+Switcher will scan all the links in the set and determine if any can be deeplinked to native apps. If a username can't be derived from a URL pattern, Switcher will look for the `data-username` attribute.
 
 
 Options/Settings
@@ -52,7 +46,6 @@ Option | Default | Description
 ------ | ------- | ---------------------------------------------
 `debug`| `false` |Converts links on non-iOS devices for testing
 `iOS`  | `iPhone, iPod, iPad` | Defines the `navigator.userAgent` to look for on iOS
-`usernameFromURL` | `true` | Attempts to derive usernames from URLs. If `false`, you can define usernames in the `data-username` attribute
 `additionalSchemas` | An array of patterns and schemes for additional native apps
 
 
