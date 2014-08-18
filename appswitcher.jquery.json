@@ -1,6 +1,6 @@
 {
   "name": "appswitcher",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "title": "iOS App Switcher",
   "author": {
     "name": "Ryan Scherf",
@@ -18,12 +18,14 @@
   },
   "description": "Deeplink all your social profiles to native iOS apps",
   "keywords": [
-    "permalink",
-    "slug",
+    "ios",
+    "links",
     "url",
-    "string",
-    "transliterate",
-    "parameterize"
+    "scheme",
+    "deeplink",
+    "link",
+    "jquery",
+    "ui"
   ],
   "homepage": "http://github.com/rscherf/switcher",
   "docs": "https://github.com/rscherf/Switcher/blob/master/README.md",
