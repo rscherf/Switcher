@@ -54,7 +54,7 @@ Option | Default | Description
 ------ | ------- | ---------------------------------------------
 `debug`| `false` |Converts links on non-iOS devices for testing
 `iOS`  | `iPhone, iPod, iPad` | Defines the `navigator.userAgent` to look for on iOS
-`additionalSchemas` | An array of patterns and schemes for additional native apps
+`additionalSchemas` | `[]` | An array of patterns and schemes for additional native apps
 
 
 Contribute
