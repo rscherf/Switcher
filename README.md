@@ -43,7 +43,9 @@ Some apps (liked LinkedIn) require an `id` to access, and not the pretty usernam
 </a>
 ```
 
-Switcher will scan all the links in the set and determine if any can be deeplinked to native apps. If a username can't be derived from a URL pattern, Switcher will look for the `data-username` attribute.
+Switcher will scan all the links in the set and determine if any can be deeplinked to native apps. If a username can't be found in `data-username` attribute, Switcher will attempt to derive it from the URL.
+
+If the native iOS app isn't installed, Switcher will load the link as expected.
 
 
 Options/Settings
