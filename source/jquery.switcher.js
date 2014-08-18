@@ -12,8 +12,7 @@
 		var settings = $.extend({
 			additionalSchemas : [],
 			debug							: false,
-			iOS								: /(iPad|iPhone|iPod)/g.test(navigator.userAgent),
-			usernameFromURL 	: true, // or use data-username html attribute
+			iOS								: /(iPad|iPhone|iPod)/g.test(navigator.userAgent)
     }, options);
 
 		if(settings.iOS || settings.debug)
@@ -48,7 +47,7 @@
 				{
 					pattern : /(linkedin)/g,
 					scheme  : function(username) {
-						return "linkedin://profile/" + username
+						return "linkedin://#profile/" + username
 					}
 				},
 				{
@@ -77,13 +76,16 @@
 			// Iterate through the set
 	    this.each(function() {
 
-	  		var $this  = $(this),
-					href  	 = $(this).attr("href");
+	  		var $this    = $(this),
+					href  	 	 = $(this).attr("href"),
+					identifier = href.split(".com/");
 
-				if(settings.usernameFromURL)
-					username = href.split(".com/")[1];
-				else
+				if(identifier.length > 1)
+					username = identifier[1];
+				else if($this.data("username") != "")
 					username = $this.data("username");
+				else
+					username = "notfound";
 
 				$(services).each(function(i) {
 					if(services[i].pattern.test(href))
