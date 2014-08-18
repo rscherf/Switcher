@@ -1,7 +1,7 @@
 {
-  "name": "switcher",
+  "name": "appswitcher",
   "version": "0.1.2",
-  "title": "jQuery Switcher",
+  "title": "iOS App Switcher",
   "author": {
     "name": "Ryan Scherf",
     "email": "ryanscherf@gmail.com",
