@@ -28,7 +28,7 @@
 						if(isNaN(parseInt(username)))
 						{
 							$.ajax({
-								url			 : "https://graph.facebook.com/" + username,
+								url			 : "http://graph.facebook.com/" + username,
 								type 		 : "get",
 								dataType : "json",
 								async		 : false,
@@ -68,6 +68,12 @@
 						return "twitter://user?screen_name=" + username
 					}
 				},
+				{
+					pattern : /(ryan.sc)/g,
+					scheme : function(u) {
+						return "ryansc://no-app-here"
+					}
+				}
 			];
 
 			// Add on any user defined schemas
@@ -80,7 +86,7 @@
 					href  	 	 = $(this).attr("href"),
 					identifier = href.split(".com/");
 
-				if($this.data("username") != "")
+				if($this.data("username"))
 					username = $this.data("username");
 				else if(identifier.length > 1)
 					username = identifier[1];
@@ -94,6 +100,14 @@
 						return false;
 					}
 				});
+
+				// If visitor doesn't have the app, open the link
+				$(this).on("click", function() {
+					setTimeout(function() {
+						window.location = href;
+					}, 300);
+				});
+
 	    });
 
 	  }
