@@ -91,15 +91,16 @@
         if(services[i].pattern.test(href))
         {
           $this.attr("href", services[i].scheme(username)); 
+
+          // If visitor doesn't have the app, open the link
+          $this.bind("click", function() {
+            setTimeout(function() {
+              window.location = href;
+            }, 300);
+          });
+
           return false;
         }
-      });
-
-      // If visitor doesn't have the app, open the link
-      $(this).bind("click", function() {
-        setTimeout(function() {
-          window.location = href;
-        }, 300);
       });
 
     });
