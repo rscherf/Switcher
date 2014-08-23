@@ -9,6 +9,10 @@
 (function($) {
   $.fn.switcher = function(options) {
 
+  // For prevention of Safari executing redirect if app is found
+  window.hasHidden = false;
+  $(window).bind("blur pagehide",  function() { window.hasHidden = true; });
+
   var settings = $.extend({
     additionalSchemas : [],
     debug             : false,
@@ -95,8 +99,12 @@
           // If visitor doesn't have the app, open the link
           $this.bind("click", function() {
             setTimeout(function() {
-              window.location = href;
-            }, 300);
+              if(!window.hasHidden) {
+                window.location  = href;
+              } else {
+                window.hasHidden = false;
+              }
+            }, 1000);
           });
 
           return false;
