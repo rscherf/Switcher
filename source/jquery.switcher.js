@@ -67,12 +67,6 @@
         scheme  : function(username) {
           return "twitter://user?screen_name=" + username
         }
-      },
-      {
-        pattern : /(ryan.sc)/g,
-        scheme  : function(u) {
-          return "ryansc://no-app-here"
-        }
       }
     ];
 
@@ -102,7 +96,7 @@
       });
 
       // If visitor doesn't have the app, open the link
-      $(this).on("click", function() {
+      $(this).bind("click", function() {
         setTimeout(function() {
           window.location = href;
         }, 300);
