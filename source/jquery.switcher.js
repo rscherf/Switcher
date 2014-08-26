@@ -98,14 +98,21 @@
 
           // If visitor doesn't have the app, open the link
           $this.bind("click", function() {
-            setTimeout(function() {
-              if(!window.hasHidden) {
-                window.location  = href;
-              } else {
-                window.hasHidden = false;
-              }
-            }, 1000);
-          });
+            //fix browser redirect even app installed
+            var start = new Date().getTime(), end, elapsed;            
+            end = new Date().getTime();
+ 
+            elapsed = (end - start);
+         
+            // if there's no elapsed time, then the scheme didn't fire, and we head to the url.
+            if (elapsed < 1) {
+                document.location = href;
+            }
+            else {
+                    window.hasHidden = false;
+                  }
+                    
+            });
 
           return false;
         }
