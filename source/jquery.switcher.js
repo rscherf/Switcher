@@ -2,7 +2,7 @@
  * jQuery iOS App Switcher
  *  - by Ryan Scherf
  *
- * Convert your site's links to URL 
+ * Convert your site's links to URL
  * schemes to deeplink to iOS apps.
  ************************************************/
 
@@ -61,12 +61,6 @@
         }
       },
       {
-        pattern : /(quirky)/g,
-        scheme  : function(username) {
-          return "quirky:///" + username
-        }
-      },
-      {
         pattern : /(twitter)/g,
         scheme  : function(username) {
           return "twitter://user?screen_name=" + username
@@ -94,7 +88,7 @@
       $(services).each(function(i) {
         if(services[i].pattern.test(href))
         {
-          $this.attr("href", services[i].scheme(username)); 
+          $this.attr("href", services[i].scheme(username));
 
           // If visitor doesn't have the app, open the link
           $this.bind("click", function() {
