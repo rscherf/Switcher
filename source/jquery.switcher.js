@@ -65,6 +65,12 @@
         scheme  : function(username) {
           return "twitter://user?screen_name=" + username
         }
+      },
+      {
+        pattern : /(getfam)/g,
+        scheme  : function() {
+          return "fam://"
+        }
       }
     ];
 
@@ -83,7 +89,7 @@
       else if(identifier.length > 1)
         username = identifier[1];
       else
-        username = "notfound";
+        username = null;
 
       $(services).each(function(i) {
         if(services[i].pattern.test(href))
